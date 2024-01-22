@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import '../../Components/Styles/register.css'
+import '../../Components/Styles/register.css';
+import '../../Components/Styles/registerbtn.css';
 
 const Login = () => {
   return (
     <div>
-
-
       <div className="hero min-h-screen">
         <div className="hero-content  flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm  bg-transparent shadow-lg">
@@ -43,7 +42,9 @@ const Login = () => {
                     />
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn form-btn">Login</button>
+                    <button class="bittu">
+                      <span class="bittu-content">Login </span>
+                    </button>
                   </div>
                   <div>
                     <p className="sign-up-label">
@@ -53,7 +54,6 @@ const Login = () => {
                       </Link>
                     </p>
                   </div>
-              
                 </form>
               </div>
             </div>

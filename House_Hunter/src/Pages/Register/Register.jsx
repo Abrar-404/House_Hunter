@@ -3,6 +3,7 @@ import '../../Components/Styles/register.css';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { useState } from 'react';
+import '../../Components/Styles/registerbtn.css';
 
 const Register = () => {
   const [value, setValue] = useState();
@@ -91,7 +92,9 @@ const Register = () => {
                     />
                   </div>
                   <div className="form-control mt-6">
-                    <button className="btn form-btn">Login</button>
+                    <button class="bittu">
+                      <span class="bittu-content">Register </span>
+                    </button>
                   </div>
                   <div>
                     <p className="sign-up-label">

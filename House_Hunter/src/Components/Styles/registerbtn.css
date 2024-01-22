@@ -1,0 +1,40 @@
+.bittu {
+  position: relative;
+  overflow: hidden;
+  height: 2.5rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: black;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.bittu:hover::before {
+  transform: scaleX(1);
+}
+
+.bittu-content {
+  position: relative;
+  z-index: 1;
+}
+
+.bittu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background-color: #134761;
+  /* background: linear-gradient(
+    82.3deg,
+    rgb(2, 61, 107) 10.8%,
+    rgba(211, 9, 164, 0.943) 94.3%
+  ); */
+  transition: all 0.475s;
+}

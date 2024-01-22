@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
+import '../Styles/registerbtn.css';
 
 const Navbar = () => {
   const navs = (
     <>
       <Link to="/">
-        <button className="btn btn-primary">Home</button>
+        <button class="bittu">
+          <span class="bittu-content">Home </span>
+        </button>
       </Link>
-      <button className="btn btn-primary">Houses</button>
-      <button className="btn btn-primary">Dashboard</button>
+      <button class="bittu">
+        <span class="bittu-content">Houses </span>
+      </button>
+      <button class="bittu">
+        <span class="bittu-content">Dashboard </span>
+      </button>
     </>
   );
 
@@ -49,7 +56,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <Link to="/login">
-            <button className="btn btn-primary">Login</button>
+            <button class="bittu">
+              <span class="bittu-content">Login </span>
+            </button>
           </Link>
         </div>
       </div>
