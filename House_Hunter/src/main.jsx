@@ -8,6 +8,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import { StyledEngineProvider } from '@mui/material/styles';
+import AddHouse from './Pages/AddHouse/AddHouse';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: '/addhouse',
+        element: <AddHouse></AddHouse>,
       },
     ],
   },

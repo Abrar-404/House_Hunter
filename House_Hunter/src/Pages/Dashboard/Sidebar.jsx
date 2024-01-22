@@ -16,9 +16,9 @@ import cx from 'classnames';
 
 const menuItems = [
   { title: 'Home', icon: faHome, path: '/' },
-  { title: 'Profile', icon: faUsers, path: '/dashboard' },
-  { title: 'Manage Task', icon: faCompass, path: '/tasks' },
-  { title: 'Create Task ', icon: faCogs, path: '/createtask' },
+  { title: 'Owned Houses', icon: faUsers, path: '/dashboard' },
+  { title: 'Listed Houses', icon: faCompass, path: '/tasks' },
+  { title: 'Add New House', icon: faCogs, path: '/addhouse' },
 ];
 
 const Sidebar = () => {
