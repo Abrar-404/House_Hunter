@@ -198,7 +198,7 @@ const AddHouse = () => {
                     className="input input-bordered"
                     required
                     name="number"
-                    pattern="[+]*880[0-9]+"
+                    pattern="^\+880\d{10}$"
                     title="Please enter a valid Bangladesh phone number starting with +880"
                   />
                 </div>
