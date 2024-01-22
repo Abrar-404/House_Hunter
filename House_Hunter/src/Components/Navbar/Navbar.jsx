@@ -13,9 +13,11 @@ const Navbar = () => {
       <button class="bittu">
         <span class="bittu-content">Houses </span>
       </button>
-      <button class="bittu">
-        <span class="bittu-content">Dashboard </span>
-      </button>
+      <Link to="/dashboard">
+        <button class="bittu">
+          <span class="bittu-content">Dashboard </span>
+        </button>
+      </Link>
     </>
   );
 
