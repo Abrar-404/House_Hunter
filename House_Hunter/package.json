@@ -26,7 +26,8 @@
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.21.3",
     "react-transition-group": "^4.4.5",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.10.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
