@@ -12,7 +12,7 @@ const Banner = () => {
           </span>{' '}
           Us
         </h1>
-        <img className="w-[400px] h-[300px]" src={BannerImg} alt="" />
+        <img className="w-[480px] h-[400px]" src={BannerImg} alt="" />
       </div>
     </div>
   );

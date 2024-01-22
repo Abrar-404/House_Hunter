@@ -4,7 +4,9 @@ import logo from '../../assets/Logo.png';
 const Navbar = () => {
   const navs = (
     <>
-      <button className="btn btn-primary">Home</button>
+      <Link to="/">
+        <button className="btn btn-primary">Home</button>
+      </Link>
       <button className="btn btn-primary">Houses</button>
       <button className="btn btn-primary">Dashboard</button>
     </>
@@ -46,7 +48,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal gap-5 px-1">{navs}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login</a>
+          <Link to="/login">
+            <button className="btn btn-primary">Login</button>
+          </Link>
         </div>
       </div>
     </div>
