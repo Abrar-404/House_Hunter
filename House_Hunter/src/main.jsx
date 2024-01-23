@@ -40,6 +40,10 @@ const router = createBrowserRouter([
         path: '/listedhouses',
         element: <ListedHouseFilter></ListedHouseFilter>,
       },
+      {
+        path: '/listedhouses',
+        element: <ListedHouseFilter></ListedHouseFilter>,
+      },
     ],
   },
 ]);
