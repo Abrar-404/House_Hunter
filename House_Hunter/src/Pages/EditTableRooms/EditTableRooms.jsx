@@ -53,7 +53,7 @@ const EditTableRooms = () => {
 
     console.log(allData);
 
-    fetch(`http://localhost:5000/addhouse/${_id}`, {
+    fetch(`https://househunter-five.vercel.app/addhouse/${_id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',

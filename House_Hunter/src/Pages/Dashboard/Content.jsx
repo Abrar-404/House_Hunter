@@ -11,7 +11,7 @@ const Content = () => {
   const [tableRooms, setTableRooms] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/addhouse')
+    fetch('https://househunter-five.vercel.app/addhouse')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -24,10 +24,9 @@ const Content = () => {
   console.log(tableRooms);
   return (
     <div className={'content'}>
-      
-        {tableRooms?.map(tables => (
-          <ContentCard key={tables?._id} tables={tables}></ContentCard>
-        ))}
+      {tableRooms?.map(tables => (
+        <ContentCard key={tables?._id} tables={tables}></ContentCard>
+      ))}
     </div>
   );
 };

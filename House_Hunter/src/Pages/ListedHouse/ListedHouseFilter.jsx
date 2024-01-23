@@ -5,14 +5,13 @@ const ListedHouseFilter = () => {
   const [roomData, setRoomData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/addhouse')
+    fetch('https://househunter-five.vercel.app/addhouse')
       .then(res => res.json())
       .then(data => setRoomData(data));
   }, [roomData]);
 
   return (
     <div>
-      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 mt-10 gap-3 mx-auto">
         {roomData?.map(roomsDetails => (
           <ListedHouseCard

@@ -10,4 +10,3 @@ function isPalindrome(palin) {
   return true;
 }
 
-console.log(isPalindrome('level'));

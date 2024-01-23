@@ -15,11 +15,14 @@ const AuthProvider = ({ children }) => {
         return;
       }
 
-      const response = await axios.get('http://localhost:5000/currentuser', {
-        headers: {
-          Authorization: token,
-        },
-      });
+      const response = await axios.get(
+        'https://househunter-five.vercel.app/currentuser',
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       setUser(response.data);
       setLoading(false);
     } catch (error) {

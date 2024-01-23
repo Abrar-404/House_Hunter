@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ContentCard = ({ tables }) => {
+  const [, setTables] = useState();
+
   const {
     name,
     number,
@@ -36,10 +38,13 @@ const ContentCard = ({ tables }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/addhouse/${_id}`, options)
+        fetch(`https://househunter-five.vercel.app/addhouse/${_id}`, options)
           .then(response => response.json())
           .then(response => {
             console.log(response);
+            setTables(prevTables =>
+              prevTables.filter(table => table._id !== _id)
+            );
           })
           .catch(err => console.error(err));
         Swal.fire({

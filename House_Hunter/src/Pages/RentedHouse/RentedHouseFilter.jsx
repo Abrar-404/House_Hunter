@@ -7,7 +7,7 @@ const RentedHouseFilter = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/renthouse')
+      .get('https://househunter-five.vercel.app/renthouse')
       .then(response => setRentData(response.data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);

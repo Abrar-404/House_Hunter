@@ -24,22 +24,24 @@ const Login = () => {
     const { email, password } = data;
     const loginUser = { email, password };
 
-    axios.post(`http://localhost:5000/login`, loginUser).then(res => {
-      const token = res.data;
-      localStorage.setItem('token', token);
-      if (localStorage.getItem('token')) {
-        reset();
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Welcome to HouseHunter',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate('/dashboard');
-        getUserData();
-      }
-    });
+    axios
+      .post(`https://househunter-five.vercel.app/login`, loginUser)
+      .then(res => {
+        const token = res.data;
+        localStorage.setItem('token', token);
+        if (localStorage.getItem('token')) {
+          reset();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Welcome to HouseHunter',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate('/dashboard');
+          getUserData();
+        }
+      });
   };
 
   return (

@@ -58,13 +58,13 @@ const router = createBrowserRouter([
         path: '/addhouse/:id',
         element: <EditTableRooms></EditTableRooms>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/addhouse/${params.id}`),
+          fetch(`https://househunter-five.vercel.app/addhouse/${params.id}`),
       },
       {
         path: '/addhouse/:id',
         element: <Content></Content>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/addhouse/${params.id}`),
+          fetch(`https://househunter-five.vercel.app/addhouse/${params.id}`),
       },
     ],
   },

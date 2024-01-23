@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import useAxiosSecure from './../../Hooks/useAxiosSecure';
-import '../../Components/Styles/register.css'
+import '../../Components/Styles/register.css';
 
 const AddHouse = () => {
   const axiosSecure = useAxiosSecure();
@@ -40,8 +40,9 @@ const AddHouse = () => {
       console.log(res.data);
       if (res.data.insertedId) {
         Swal.fire({
+          icon: 'success',
           title: `Bingo!`,
-          text: ` ${name} added to the cart.`,
+          text: ` ${name} added.`,
           // imageUrl: `${img}`,
           imageWidth: 400,
           imageHeight: 200,

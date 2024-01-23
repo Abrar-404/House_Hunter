@@ -32,7 +32,7 @@ const Register = () => {
 
   //   try {
   //     const response = await axios.post(
-  //       'http://localhost:5000/register',
+  //       'https://househunter-five.vercel.app/register',
   //       formData
   //     );
   //     console.log(response.data);
@@ -56,19 +56,21 @@ const Register = () => {
     const registerUser = { name, email, password, role, number };
     console.log(registerUser);
 
-    axios.post('http://localhost:5000/signup', registerUser).then(res => {
-      if (res.data.insertedId) {
-        reset();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your account created successful',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate('/login');
-      }
-    });
+    axios
+      .post('https://househunter-five.vercel.app/signup', registerUser)
+      .then(res => {
+        if (res.data.insertedId) {
+          reset();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your account created successful',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate('/login');
+        }
+      });
   };
 
   return (
