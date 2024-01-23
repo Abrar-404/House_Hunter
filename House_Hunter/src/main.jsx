@@ -11,6 +11,8 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import AddHouse from './Pages/AddHouse/AddHouse';
 import ListedHouseFilter from './Pages/ListedHouse/ListedHouseFilter';
 import EditTableRooms from './Pages/EditTableRooms/EditTableRooms';
+import Content from './Pages/Dashboard/Content';
+import RentHouse from './Pages/RentHouse/RentHouse';
 
 const router = createBrowserRouter([
   {
@@ -42,12 +44,20 @@ const router = createBrowserRouter([
         element: <ListedHouseFilter></ListedHouseFilter>,
       },
       {
+        path: '/renthouse',
+        element: <RentHouse></RentHouse>,
+      },
+      {
         path: '/addhouse/:id',
         element: <EditTableRooms></EditTableRooms>,
         loader: ({ params }) =>
-          fetch(
-            `http://localhost:5000/addhouse/${params.id}`
-          ),
+          fetch(`http://localhost:5000/addhouse/${params.id}`),
+      },
+      {
+        path: '/addhouse/:id',
+        element: <Content></Content>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/addhouse/${params.id}`),
       },
     ],
   },

@@ -18,7 +18,8 @@ const menuItems = [
   { title: 'Home', icon: faHome, path: '/' },
   { title: 'Owned Houses', icon: faUsers, path: '/dashboard' },
   { title: 'Listed Houses', icon: faCompass, path: '/listedhouses' },
-  { title: 'Add New House', icon: faCogs, path: '/addhouse' },
+  { title: 'Add New House', icon: faHome, path: '/addhouse' },
+  { title: 'Rent a House', icon: faHome, path: '/renthouse' },
 ];
 
 const Sidebar = () => {

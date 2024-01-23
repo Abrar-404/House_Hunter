@@ -1,27 +1,13 @@
-import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import '../../Components/Styles/registerbtn.css';
+import useAxiosSecure from './../../Hooks/useAxiosSecure';
+import '../../Components/Styles/register.css';
 
-const EditTableRooms = () => {
-  const roomDetails = useLoaderData();
+const RentHouse = () => {
+  const axiosSecure = useAxiosSecure();
 
-  const {
-    name,
-    number,
-    rent,
-    available,
-    address,
-    picture,
-    city,
-    bedrooms,
-    bathroom,
-    room,
-    description,
-    _id,
-  } = roomDetails || {};
-
-  const handleUpdate = e => {
+  const handleFormData = e => {
     e.preventDefault();
+
     const form = e.target;
 
     const name = form.name.value;
@@ -35,50 +21,36 @@ const EditTableRooms = () => {
     const rent = form.rent.value;
     const number = form.number.value;
     const description = form.description.value;
+    const email = form.email.value;
 
     const allData = {
       name,
-      number,
-      rent,
-      available,
       address,
-      picture,
       city,
       bedrooms,
       bathroom,
       room,
+      picture,
+      available,
+      rent,
+      number,
       description,
-      _id,
+      email,
     };
 
-    console.log(allData);
-
-    fetch(`http://localhost:5000/addhouse/${_id}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(allData),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.modifiedCount) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Updated Succefully',
-            width: 600,
-            padding: '3em',
-            color: 'White',
-            background: '#134761',
-            backdrop: `
-            rgba(0,0,123,0.4)
-            top
-            no-repeat
-          `,
-          });
-        }
-      });
+    axiosSecure.post('/renthouse', allData).then(res => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: `Bingo!`,
+          text: ` ${name} added to the cart.`,
+          // imageUrl: `${img}`,
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        });
+      }
+    });
   };
 
   return (
@@ -87,12 +59,12 @@ const EditTableRooms = () => {
         <div className="hero-content flex-col gap-10">
           <div className="text-center mt-32">
             <h1 className="text-5xl font-bold">
-              Edit Your{' '}
+              Rent Your{' '}
               <span className="text-[#134761] font-extrabold">Houses</span>!
             </h1>
           </div>
           <div className="card w-full  shadow-2xl bg-base-100">
-            <form onSubmit={handleUpdate} className="card-body">
+            <form onSubmit={handleFormData} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-bold">Name</span>
@@ -103,7 +75,19 @@ const EditTableRooms = () => {
                   className="input input-bordered"
                   required
                   name="name"
-                  defaultValue={name}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold">Email</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="input input-bordered"
+                  required
+                  name="email"
                 />
               </div>
 
@@ -115,7 +99,6 @@ const EditTableRooms = () => {
                   type="text"
                   placeholder="Your Address"
                   className="input input-bordered"
-                  defaultValue={address}
                   required
                   name="address"
                 />
@@ -132,7 +115,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="city"
-                    defaultValue={city}
                   />
                 </div>
 
@@ -146,7 +128,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="bedrooms"
-                    defaultValue={bedrooms}
                   />
                 </div>
               </div>
@@ -162,7 +143,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="bathroom"
-                    defaultValue={bathroom}
                   />
                 </div>
 
@@ -176,7 +156,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="room"
-                    defaultValue={room}
                   />
                 </div>
               </div>
@@ -191,7 +170,6 @@ const EditTableRooms = () => {
                   className="input input-bordered"
                   required
                   name="picture"
-                  defaultValue={picture}
                 />
               </div>
 
@@ -208,7 +186,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="available"
-                    defaultValue={available}
                   />
                 </div>
 
@@ -222,7 +199,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="rent"
-                    defaultValue={rent}
                   />
                 </div>
               </div>
@@ -238,7 +214,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="number"
-                    defaultValue={number}
                     pattern="^\+880\d{10}$"
                     title="Please enter a valid Bangladesh phone number starting with +880"
                   />
@@ -254,7 +229,6 @@ const EditTableRooms = () => {
                     className="input input-bordered"
                     required
                     name="description"
-                    defaultValue={description}
                   />
                 </div>
               </div>
@@ -272,4 +246,4 @@ const EditTableRooms = () => {
   );
 };
 
-export default EditTableRooms;
+export default RentHouse;

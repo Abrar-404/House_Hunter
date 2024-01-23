@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import useAxiosSecure from './../../Hooks/useAxiosSecure';
+import '../../Components/Styles/register.css'
 
 const AddHouse = () => {
   const axiosSecure = useAxiosSecure();
@@ -218,7 +219,9 @@ const AddHouse = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button class="bittu">
+                  <span class="bittu-content">Submit </span>
+                </button>
               </div>
             </form>
           </div>
