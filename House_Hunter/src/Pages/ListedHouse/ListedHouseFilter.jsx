@@ -12,7 +12,8 @@ const ListedHouseFilter = () => {
 
   return (
     <div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto'>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-2 mt-10 gap-3 mx-auto">
         {roomData?.map(roomsDetails => (
           <ListedHouseCard
             key={roomsDetails?.id}
