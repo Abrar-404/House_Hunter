@@ -8,17 +8,7 @@ import axios from 'axios';
 
 const Register = () => {
   const [value, setValue] = useState();
-  // const [formData, setFormData] = useState({
-  //   username: '',
-  //   email: '',
-  //   number: '',
-  //   role: '',
-  //   password: '',
-  // });
 
-  // const handleInputChange = e => {
-  //   setFormData({ ...formData, [e.target.username]: e.target.value });
-  // };
 
   const handleRegister = async e => {
     e.preventDefault();
