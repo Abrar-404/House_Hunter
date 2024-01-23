@@ -15,6 +15,7 @@ import Content from './Pages/Dashboard/Content';
 import RentHouse from './Pages/RentHouse/RentHouse';
 import RentedHouse from './Pages/RentedHouse/RentedHouse';
 import RentedHouseFilter from './Pages/RentedHouse/RentedHouseFilter';
+import AuthProvider from './AuthProvider/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StyledEngineProvider injectFirst>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StyledEngineProvider>
 );

@@ -1,8 +1,47 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import '../../Components/Styles/register.css';
 import '../../Components/Styles/registerbtn.css';
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showError, setShowError] = useState('');
+  const navigate = useNavigate();
+  const { getUserData } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = data => {
+    const { email, password } = data;
+    const loginUser = { email, password };
+
+    axios.post(`http://localhost:5000/login`, loginUser).then(res => {
+      const token = res.data;
+      localStorage.setItem('token', token);
+      if (localStorage.getItem('token')) {
+        reset();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Welcome to HouseHunter',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate('/dashboard');
+        getUserData();
+      }
+    });
+  };
+
   return (
     <div>
       <div className="hero min-h-screen">
@@ -11,7 +50,10 @@ const Login = () => {
             <div>
               <div></div>
               <div className="form-container">
-                <form className="card-body form">
+                <form
+                  className="card-body form"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <p className="title">Login</p>
                   <div className="form-control">
                     <label className="label">
@@ -25,6 +67,7 @@ const Login = () => {
                       className="input input-bordered border-slate-400"
                       required
                       name="email"
+                      {...register('email')}
                     />
                   </div>
                   <div className="form-control">
@@ -39,6 +82,7 @@ const Login = () => {
                       className="input input-bordered border-slate-400"
                       required
                       name="password"
+                      {...register('password')}
                     />
                   </div>
                   <div className="form-control mt-6">

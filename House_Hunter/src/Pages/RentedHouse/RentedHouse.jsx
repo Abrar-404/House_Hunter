@@ -18,7 +18,7 @@ const RentedHouse = ({ rentHouse }) => {
   return (
     <div>
       <div class="cardush">
-        <img className="w-[350px] h-[500px]" src={picture} alt="" />
+        <img className="w-[500px] h-[500px]" src={picture} alt="" />
         <div class="cardush__content">
           <p class="cardush__title">{name}</p>
           <div className="mt-2">

@@ -1,42 +1,74 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../Components/Styles/register.css';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { useState } from 'react';
 import '../../Components/Styles/registerbtn.css';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
 const Register = () => {
   const [value, setValue] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showError, setShowError] = useState('');
+  const navigate = useNavigate();
 
+  // const handleRegister = async e => {
+  //   e.preventDefault();
+  //   const form = e.target;
 
-  const handleRegister = async e => {
-    e.preventDefault();
-    const form = e.target;
+  //   const username = form.username.value;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   const number = form.number.value;
 
-    const username = form.username.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const number = form.number.value;
+  //   const formData = {
+  //     username: username,
+  //     email: email,
+  //     password: password,
+  //     number: number,
+  //   };
 
-    const formData = {
-      username: username,
-      email: email,
-      password: password,
-      number: number,
-    };
+  //   try {
+  //     const response = await axios.post(
+  //       'http://localhost:5000/register',
+  //       formData
+  //     );
+  //     console.log(response.data);
+  //     // You can handle success, redirect, show a message, etc.
+  //   } catch (error) {
+  //     console.error('Error registering user', error.response.data);
+  //     // Handle errors: display an error message, log, etc.
+  //   }
+  // };
 
-    try {
-      const response = await axios.post(
-        'http://localhost:5000/register',
-        formData
-      );
-      console.log(response.data);
-      // You can handle success, redirect, show a message, etc.
-    } catch (error) {
-      console.error('Error registering user', error.response.data);
-      // Handle errors: display an error message, log, etc.
-    }
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = data => {
+    const { name, email, password, role, number } = data;
+    console.log(data);
+    const registerUser = { name, email, password, role, number };
+    console.log(registerUser);
+
+    axios.post('http://localhost:5000/signup', registerUser).then(res => {
+      if (res.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your account created successful',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate('/login');
+      }
+    });
   };
 
   return (
@@ -47,7 +79,10 @@ const Register = () => {
             <div>
               <div></div>
               <div className="form-container">
-                <form className="card-body form" onSubmit={handleRegister}>
+                <form
+                  className="card-body form"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <p className="title">Register</p>
                   <div className="form-control">
                     <label className="label">
@@ -60,7 +95,8 @@ const Register = () => {
                       placeholder="Your Full Name"
                       className="input input-bordered border-slate-400"
                       required
-                      name="username"
+                      name="name"
+                      {...register('name')}
                     />
                   </div>
 
@@ -76,6 +112,7 @@ const Register = () => {
                       className="input input-bordered border-slate-400"
                       required
                       name="email"
+                      {...register('email')}
                     />
                   </div>
 
@@ -91,6 +128,7 @@ const Register = () => {
                       name="number"
                       className="input input-bordered border-slate-400"
                       onChange={setValue}
+                      {...register('number')}
                     />
                   </div>
 
@@ -100,12 +138,21 @@ const Register = () => {
                         Role
                       </span>
                     </label>
-                    <select className="select select-info  w-full max-w-xs">
+                    {/* <select className="select select-info  w-full max-w-xs">
                       <option disabled selected>
                         Select Role
                       </option>
                       <option>House Owner</option>
                       <option>House Renter</option>
+                    </select> */}
+
+                    <select
+                      className=" w-full  p-2 lg:p-3 rounded-md focus:outline-none my-2 border border-green-500"
+                      {...register('role')}
+                      required
+                    >
+                      <option value="owner">House Owner</option>
+                      <option value="renter">House Renter</option>
                     </select>
                   </div>
 
@@ -121,6 +168,7 @@ const Register = () => {
                       className="input input-bordered border-slate-400"
                       required
                       name="password"
+                      {...register('password')}
                     />
                   </div>
                   <div className="form-control mt-6">

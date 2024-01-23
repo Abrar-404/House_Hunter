@@ -1,7 +1,6 @@
 import '../../Components/Styles/housecard.css';
 
 const ListedHouseCard = ({ roomsDetails }) => {
-
   const {
     name,
     number,
@@ -16,12 +15,10 @@ const ListedHouseCard = ({ roomsDetails }) => {
     description,
   } = roomsDetails || {};
 
-
-
   return (
     <div className="">
       <div class="cardush">
-        <img className="w-[350px] h-[500px]" src={picture} alt="" />
+        <img className="w-[500px] h-[500px] mx-auto" src={picture} alt="" />
         <div class="cardush__content">
           <p class="cardush__title">{name}</p>
           <div className="mt-2">
