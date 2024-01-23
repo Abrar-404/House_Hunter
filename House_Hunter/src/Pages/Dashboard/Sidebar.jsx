@@ -17,7 +17,7 @@ import cx from 'classnames';
 const menuItems = [
   { title: 'Home', icon: faHome, path: '/' },
   { title: 'Owned Houses', icon: faUsers, path: '/dashboard' },
-  { title: 'Listed Houses', icon: faCompass, path: '/tasks' },
+  { title: 'Listed Houses', icon: faCompass, path: '/listedhouses' },
   { title: 'Add New House', icon: faCogs, path: '/addhouse' },
 ];
 
