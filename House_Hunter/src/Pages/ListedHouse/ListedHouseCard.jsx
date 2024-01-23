@@ -1,6 +1,7 @@
 import '../../Components/Styles/housecard.css';
 
 const ListedHouseCard = ({ roomsDetails }) => {
+
   const {
     name,
     number,
@@ -14,6 +15,8 @@ const ListedHouseCard = ({ roomsDetails }) => {
     room,
     description,
   } = roomsDetails || {};
+
+
 
   return (
     <div className="">

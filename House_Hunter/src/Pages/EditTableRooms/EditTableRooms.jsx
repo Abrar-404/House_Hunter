@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const EditTableRooms = () => {
   const roomDetails = useLoaderData();
@@ -15,7 +16,69 @@ const EditTableRooms = () => {
     bathroom,
     room,
     description,
+    _id,
   } = roomDetails || {};
+
+  const handleUpdate = e => {
+    e.preventDefault();
+    const form = e.target;
+
+    const name = form.name.value;
+    const address = form.address.value;
+    const city = form.city.value;
+    const bedrooms = form.bedrooms.value;
+    const bathroom = form.bathroom.value;
+    const room = form.room.value;
+    const picture = form.picture.value;
+    const available = form.available.value;
+    const rent = form.rent.value;
+    const number = form.number.value;
+    const description = form.description.value;
+
+    const allData = {
+      name,
+      number,
+      rent,
+      available,
+      address,
+      picture,
+      city,
+      bedrooms,
+      bathroom,
+      room,
+      description,
+      _id,
+    };
+
+    console.log(allData);
+
+    fetch(`http://localhost:5000/addhouse/${_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(allData),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Updated Succefully',
+            width: 600,
+            padding: '3em',
+            color: 'White',
+            background: '#134761',
+            backdrop: `
+            rgba(0,0,123,0.4)
+            top
+            no-repeat
+          `,
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -28,7 +91,7 @@ const EditTableRooms = () => {
             </h1>
           </div>
           <div className="card w-full  shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleUpdate} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-bold">Name</span>
