@@ -13,6 +13,8 @@ import ListedHouseFilter from './Pages/ListedHouse/ListedHouseFilter';
 import EditTableRooms from './Pages/EditTableRooms/EditTableRooms';
 import Content from './Pages/Dashboard/Content';
 import RentHouse from './Pages/RentHouse/RentHouse';
+import RentedHouse from './Pages/RentedHouse/RentedHouse';
+import RentedHouseFilter from './Pages/RentedHouse/RentedHouseFilter';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/renthouse',
         element: <RentHouse></RentHouse>,
+      },
+      {
+        path: '/rentedhouse',
+        element: <RentedHouseFilter></RentedHouseFilter>,
       },
       {
         path: '/addhouse/:id',
